@@ -42,13 +42,13 @@ public class menu_app extends AppCompatActivity  {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.nav_avaliar:
-                        Intent intent = new Intent(menu_app.this,TelaAvaliacao.class);
-                        startActivity(intent);
-                        break;
+                int id = item.getItemId();
+                if(id == R.id.nav_avaliar) {
+                    Intent intent = new Intent(menu_app.this,TelaAvaliacao.class);
+                    startActivity(intent);
+                    return true;
                 }
-                return false;
+                return menu_app.super.onOptionsItemSelected(item);
             }
         });
 

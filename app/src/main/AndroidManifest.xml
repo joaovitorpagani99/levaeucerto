@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Levaeu">
         <activity
+            android:name=".Motorista"
+            android:exported="false" />
+        <activity
             android:name=".TelaPassageiro"
             android:exported="false" />
         <activity
