@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Levaeu">
         <activity
+            android:name=".TelaAvaliacao"
+            android:exported="false" />
+        <activity
             android:name=".menu_app"
             android:exported="false"
             android:label="@string/title_activity_menu_app"
