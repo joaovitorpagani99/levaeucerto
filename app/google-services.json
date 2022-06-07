@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "645063841893",
+    "project_id": "levaeu-4aa49",
+    "storage_bucket": "levaeu-4aa49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645063841893:android:47fd5dad497527d7face8c",
+        "android_client_info": {
+          "package_name": "com.example.levaeu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645063841893-olfn811ngth8q0se0ivq75n10eo69c2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ7VrI-T-hIih1fPLpcWtSNmK3yoDGMv8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645063841893-olfn811ngth8q0se0ivq75n10eo69c2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
