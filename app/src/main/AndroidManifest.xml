@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Levaeu">
         <activity
+            android:name=".TelaPassageiro"
+            android:exported="false" />
+        <activity
             android:name=".menu_app"
             android:exported="false"
             android:label="@string/title_activity_menu_app"
-            android:theme="@style/Theme.Levaeu.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Cad_carro"
             android:exported="false" />
