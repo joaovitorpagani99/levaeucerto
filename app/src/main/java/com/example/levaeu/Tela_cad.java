@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
@@ -19,13 +22,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Tela_cad extends AppCompatActivity {
     Button cadastrar;
     RadioGroup grupo;
     private EditText cad_nome,cad_sobrenome,cad_usuario,cad_senha;
     String[] msg = {"Prencha todos os campos","cadastro realizado com sucesso"};
+    String usuarioId;
 
 
 
@@ -80,6 +88,7 @@ public class Tela_cad extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
             if(task.isSuccessful()){
+                    salvarDadosUsuario();
                     Snackbar snackbar = Snackbar.make(view, msg[1], Snackbar.LENGTH_SHORT);
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
@@ -104,6 +113,32 @@ public class Tela_cad extends AppCompatActivity {
                 }
             }
         });
+
+    }
+    private void salvarDadosUsuario(){
+        String nome = cad_nome.getText().toString();
+        String sobrenome = cad_sobrenome.getText().toString();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String,Object> usuario = new HashMap<>();
+        usuario.put("nome",nome);
+        usuario.put("sobrenome",sobrenome);
+
+        usuarioId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        DocumentReference documentReference = db.collection("Cadastro").document(usuarioId);
+        documentReference.set(usuario).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d("db","sucesso ao salvar os dados");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("db_erro","error!"+e.toString());
+            }
+        });
+
 
     }
 
