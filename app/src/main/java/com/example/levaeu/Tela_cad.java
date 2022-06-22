@@ -77,7 +77,13 @@ public class Tela_cad extends AppCompatActivity {
             }
         }
         if(cadastrar.getText().equals("Prosseguir")){
-            Intent intent = new Intent(this, Cad_carro.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("nome",nome);
+            bundle.putString("sobrenome",sobrenome);
+            bundle.putString("usuario",usuario);
+            bundle.putString("senha",senha);
+            Intent intent = new Intent(getApplicationContext(), Cad_carro.class);
+            intent.putExtras(bundle);
             startActivity(intent);
         }
     }
