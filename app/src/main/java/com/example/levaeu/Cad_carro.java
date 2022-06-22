@@ -119,9 +119,5 @@ public class Cad_carro extends AppCompatActivity {
                 Log.d("db_erro","error!"+e.toString());
             }
         });
-        if(isChild()){
-
-        }
-
     }
 }
